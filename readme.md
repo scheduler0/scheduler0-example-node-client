@@ -1,3 +1,9 @@
+## Example Usage In Node Server
+
+This is a node client example that creates a project, and 100,000 jobs and counts the number of times the jobs
+get executed.
+
+```javascript
 'use strict'
 
 /**
@@ -45,8 +51,8 @@ async function createProject() {
 async function createJobs(projectID) {
     let payload = [];
 
-    for (let i = 0; i < 100; i++) {
-        for (let j = 0; j < 1000; j++) {
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 1; j++) {
             payload.push({
                 spec: "@every 1m",
                 project_id: projectID,
@@ -115,3 +121,8 @@ app.listen(port, async () => {
     await createJobs(project.id);
     console.log(`app listening at http://localhost:${port}`);
 });
+```
+
+## LICENSE
+
+MIT License
