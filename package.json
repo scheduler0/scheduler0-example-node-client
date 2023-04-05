@@ -1,0 +1,16 @@
+{
+  "name": "scheduler0-example-node-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Victor Nwaokocha <nvonweb@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.3"
+  }
+}
