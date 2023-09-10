@@ -35,7 +35,7 @@ axiosInstance.interceptors.request.use(request => {
 
 async function createProject() {
     const { data: { data } } = await axiosInstance
-        .post('/projects', {
+        .post('/v1/projects', {
             name: "sample project",
             description: "my reminder project"
         });
@@ -45,25 +45,25 @@ async function createProject() {
 async function createJobs(projectID) {
     let payload = [];
 
-    for (let i = 0; i < 100; i++) {
-        for (let j = 0; j < 1000; j++) {
+    for (let i = 0; i < 500; i++) {
+        for (let j = 0; j < 100; j++) {
             payload.push({
                 spec: "@every 1m",
-                project_id: projectID,
-                execution_type: "http",
+                projectId: projectID,
+                executionType: "http",
                 data: JSON.stringify({jobId: i + j}),
                 timezone: 'America/New_York',
-                callback_url: `http://localhost:3000/callback`
+                callbackUrl: `http://localhost:3000/callback`
             })
         }
+    }
 
-        try {
-            const {data: {data}} = await axiosInstance
-                .post('/jobs', payload);
-            payload = []
-        } catch (err) {
-            console.error(err);
-        }
+    try {
+        const {data: {data}} = await axiosInstance
+            .post('/v1/jobs', payload);
+        payload = []
+    } catch (err) {
+        console.error(err);
     }
 }
 
